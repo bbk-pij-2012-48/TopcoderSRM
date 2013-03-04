@@ -32,9 +32,4 @@ public class ExerciseMachine {
 		return count;
 	}
 	
-
-	public static void main(String[] args) {
-		System.out.println(getPercentage("00:30:00"));
-	}
-
 }
