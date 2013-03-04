@@ -1,4 +1,4 @@
-package SRM1;
+package SRM144;
 
 public class BinaryCode {
 	
