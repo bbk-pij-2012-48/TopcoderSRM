@@ -42,6 +42,9 @@ public class Birthday {
 		}
 
 		// pick smallest date
+		for(int i=0 ; i<birthdays.length ; i++) {
+			tmp.add(birthdays[i]);
+		}
 		int best = 0;
 		for(int i=1 ; i<tmp.size() ; i++) {
 			if(month(tmp.get(i))<month(tmp.get(best))) {
@@ -70,11 +73,7 @@ public class Birthday {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(getNext("01/02", new String[]{"02/17 Wernie",
-				 "10/12 Stefan",
-				 "02/17 MichaelJordan",
-				 "10/12 LucianoPavarotti",
-				 "05/18 WilhelmSteinitz"}));
+		System.out.println(getNext("12/24", new String[]{"10/12 Stefan"}));
 
 	}
 
