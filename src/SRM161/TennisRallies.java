@@ -1,47 +1,54 @@
 package SRM161;
 
 public class TennisRallies {
+	public static int output = 0;
 
 	public static int howMany(int numLength, String[] forbidden, int allowed) {
-		int output = 0;
-		String[] forbiddenBin = new String[forbidden.length];
-		for(int i=0 ; i<forbidden.length ; i++) {
-			forbiddenBin[i] = forbidden[i].replace('c','0');
-			forbiddenBin[i] = forbiddenBin[i].replace('d','1');
+		generate("",numLength,forbidden,allowed);
+		return output;
+	}
+
+	private static void generate(String initial, int numLength, String[] forbidden, int allowed) {
+		if(initial.length()==numLength){
+			output++;
+			System.out.println(initial);
 		}
-		for(int i=0 ; i<Math.pow(2,numLength) ; i++) {
-			String tmp = Integer.toBinaryString(i);
-			int tmp2 = tmp.length();
-			int count = 0;
-			boolean valid = true;
-			for(int j=0 ; j<numLength-tmp2 ; j++) {
-				tmp = "0" + tmp;
-			}
-			for(int j=0 ; j<forbiddenBin.length ; j++) {
-				for(int k=0 ; k<tmp.length() - forbiddenBin[j].length()+1 ; k++) {
-					if(tmp.substring(k,forbiddenBin[j].length()+k).equals(forbiddenBin[j])) {
-						count++;
-						if(count >= allowed){
-							valid = false;
-							break;
-						}
+		else {
+			int tmp2 = allowed;
+			String tmp = initial;
+
+			initial += "d";
+			for(int i=0 ; i<forbidden.length ; i++) {
+				if(initial.length() >= forbidden[i].length()) {
+					if(initial.substring(initial.length() - forbidden[i].length()).equals(forbidden[i])){
+						allowed--;
 					}
 				}
-				if(!valid) {
-					break;
+			}
+			if(allowed>0) {
+				generate(initial,numLength,forbidden,allowed);
+			}
+
+			allowed = tmp2;
+			initial =  tmp + "c";
+			for(int i=0 ; i<forbidden.length ; i++) {
+				if(initial.length() >= forbidden[i].length()) {
+					if(initial.substring(initial.length() - forbidden[i].length()).equals(forbidden[i])){
+						allowed--;
+					}
 				}
 			}
-			if(valid) {
-				output++;
+
+			if(allowed>0) {
+				generate(initial,numLength,forbidden,allowed);
 			}
 		}
-		return output;
+
 	}
 
 	public static void main(String[] args) {
 
-		System.out.println(howMany(18,new String[] {"c","cc","ccc","cccc","ccccc","cccccc","ccccccc",
-				 "cccccccc","ccccccccc","cccccccccc"},100));
+		System.out.println(howMany(3,new String[] {"cc","dd"},1));
 	}
 
 }
