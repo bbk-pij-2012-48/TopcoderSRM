@@ -32,10 +32,4 @@ public class LeaguePicks {
 		}
 		return output;
 	}
-
-	
-	public static void main(String[] args) {
-		int[] tmp = returnPicks();
-	}
-
 }

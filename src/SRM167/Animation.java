@@ -21,7 +21,6 @@ public class Animation {
 			template += ".";
 		}
 		String current = init;
-		output.add(current);
 		while(true){
 			StringBuilder tmp = new StringBuilder(template);
 			for(int i=0 ; i<max ; i++) {
