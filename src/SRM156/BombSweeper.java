@@ -3,7 +3,6 @@ package SRM156;
 public class BombSweeper {
 
 	public static double winPercentage(String[] board) {
-		int total = board.length * board[0].length();
 		int lose = 0;
 		int win = 0;
 		int other = 0;

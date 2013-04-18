@@ -8,15 +8,9 @@ import java.util.List;
 public class ShortPalindromes {
 
 	public static String shortest(String base) {
-		int shortest = 2*base.length() - 1;
 		List<Integer> centre = new ArrayList<Integer>();
 		centre.add(0);
 		centre.add(base.length()-1);
-		for(int i=1 ; i<base.length()-1 ; i++) {
-			String front = base.substring(0,i);
-			String back = base.substring(i+1);
-		}
-		return null;
 	}
 
 	private static List<Character> maxOrdered(List<Character> matched, String front, String back) {
